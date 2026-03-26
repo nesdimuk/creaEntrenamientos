@@ -6,7 +6,9 @@
       "Bash(npx create-next-app@latest creaentrenamientos --typescript --tailwind --eslint --app --src-dir=false --import-alias=\"@/*\" --no-git)",
       "Bash(npx create-next-app@latest creaentrenamientos --typescript --tailwind --eslint --app --src-dir=false --import-alias=\"@/*\" --no-git --no-react-compiler)",
       "Bash(yes \"\")",
-      "Bash(npx create-next-app@latest creaentrenamientos --typescript --tailwind --eslint --app --no-src-dir --import-alias=\"@/*\" --no-git)"
+      "Bash(npx create-next-app@latest creaentrenamientos --typescript --tailwind --eslint --app --no-src-dir --import-alias=\"@/*\" --no-git)",
+      "Bash(npm install:*)",
+      "Bash(npx shadcn@latest init -d)"
     ]
   }
 }
