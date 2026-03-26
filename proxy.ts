@@ -25,7 +25,7 @@ export async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname
 
   // Si no está autenticado y quiere entrar a rutas protegidas → login
-  if (!user && !pathname.startsWith('/login') && !pathname.startsWith('/api')) {
+  if (!user && !pathname.startsWith('/login') && !pathname.startsWith('/api') && !pathname.startsWith('/auth')) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
 
