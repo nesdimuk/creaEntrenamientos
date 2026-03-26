@@ -8,7 +8,15 @@
       "Bash(yes \"\")",
       "Bash(npx create-next-app@latest creaentrenamientos --typescript --tailwind --eslint --app --no-src-dir --import-alias=\"@/*\" --no-git)",
       "Bash(npm install:*)",
-      "Bash(npx shadcn@latest init -d)"
+      "Bash(npx shadcn@latest init -d)",
+      "Bash(npx shadcn@latest add card input label badge select textarea tabs dialog)",
+      "Bash(mkdir -p \"/Users/saidtrainer/creaEntrenamientos/app/\\(admin\\)/clientes/[id]\")",
+      "Bash(mkdir -p \"/Users/saidtrainer/creaEntrenamientos/app/\\(admin\\)/programas/[id]/edit\")",
+      "Bash(mkdir -p \"/Users/saidtrainer/creaEntrenamientos/app/\\(client\\)/programas/[id]\")",
+      "Bash(mkdir -p \"/Users/saidtrainer/creaEntrenamientos/app/\\(client\\)/programas/[id]/[workoutId]\")",
+      "Bash(mkdir -p \"/Users/saidtrainer/creaEntrenamientos/app/\\(client\\)/mis-programas/[programId]\")",
+      "Bash(mkdir -p \"/Users/saidtrainer/creaEntrenamientos/app/\\(client\\)/mis-programas/[programId]/[workoutId]\")",
+      "Bash(npx tsc:*)"
     ]
   }
 }

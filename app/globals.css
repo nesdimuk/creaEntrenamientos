@@ -117,6 +117,12 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Brand variables — overridden server-side for client layout */
+:root {
+  --brand-primary: #18181b;
+  --brand-accent: #f97316;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -128,3 +134,8 @@
     @apply font-sans;
   }
 }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: oklch(0.708 0 0); border-radius: 3px; }
