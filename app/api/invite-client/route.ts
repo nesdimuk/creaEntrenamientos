@@ -14,20 +14,43 @@ export async function POST(request: Request) {
     { auth: { autoRefreshToken: false, persistSession: false } }
   )
 
-  const { data, error } = await supabaseAdmin.auth.admin.inviteUserByEmail(email, {
-    redirectTo: `${process.env.NEXT_PUBLIC_APP_URL ?? ''}/auth/confirm`,
+  const redirectTo = `${process.env.NEXT_PUBLIC_APP_URL ?? ''}/auth/confirm`
+
+  // Try invite first; if user exists, generate a magic link instead
+  const { data: inviteData, error: inviteError } = await supabaseAdmin.auth.admin.inviteUserByEmail(email, {
+    redirectTo,
     data: { client_id: clientId },
   })
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 })
+  if (inviteError) {
+    // User already exists — send magic link
+    const { data: linkData, error: linkError } = await supabaseAdmin.auth.admin.generateLink({
+      type: 'magiclink',
+      email,
+      options: { redirectTo },
+    })
+
+    if (linkError) {
+      return NextResponse.json({ error: linkError.message }, { status: 500 })
+    }
+
+    // Link user_id to client row if not already linked
+    if (linkData.user) {
+      await supabaseAdmin
+        .from('clients')
+        .update({ user_id: linkData.user.id })
+        .eq('id', clientId)
+        .is('user_id', null)
+    }
+
+    return NextResponse.json({ success: true })
   }
 
-  // Link the auth user to the client row if user already exists
-  if (data.user) {
+  // New user created — link to client row
+  if (inviteData.user) {
     await supabaseAdmin
       .from('clients')
-      .update({ user_id: data.user.id })
+      .update({ user_id: inviteData.user.id })
       .eq('id', clientId)
   }
 
