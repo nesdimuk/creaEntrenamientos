@@ -5,8 +5,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { buttonVariants } from '@/lib/button-variants'
 import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
-import { ArrowLeft, Mail, Phone, BookOpen, PlusCircle, FileText } from 'lucide-react'
+import { ArrowLeft, Mail, Phone, BookOpen, FileText } from 'lucide-react'
 import AssignProgramButton from '@/components/admin/AssignProgramButton'
+import SendInviteButton from '@/components/admin/SendInviteButton'
 
 export default async function ClientDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
@@ -57,6 +58,9 @@ export default async function ClientDetailPage({ params }: { params: Promise<{ i
           <CardContent className="space-y-2">
             <p className="flex items-center gap-2 text-sm"><Mail className="w-4 h-4 text-zinc-400" />{client.email}</p>
             {client.phone && <p className="flex items-center gap-2 text-sm"><Phone className="w-4 h-4 text-zinc-400" />{client.phone}</p>}
+            <div className="pt-1">
+              <SendInviteButton clientId={client.id} email={client.email} />
+            </div>
           </CardContent>
         </Card>
 

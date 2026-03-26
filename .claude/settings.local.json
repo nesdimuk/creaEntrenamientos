@@ -16,7 +16,10 @@
       "Bash(mkdir -p \"/Users/saidtrainer/creaEntrenamientos/app/\\(client\\)/programas/[id]/[workoutId]\")",
       "Bash(mkdir -p \"/Users/saidtrainer/creaEntrenamientos/app/\\(client\\)/mis-programas/[programId]\")",
       "Bash(mkdir -p \"/Users/saidtrainer/creaEntrenamientos/app/\\(client\\)/mis-programas/[programId]/[workoutId]\")",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }
